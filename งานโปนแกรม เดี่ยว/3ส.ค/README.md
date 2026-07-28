@@ -122,14 +122,20 @@ Iterative Algorithm
 
 # ตอบงานวิเคราะห์
 - จำนวนครั้งที่แต่ละอัลกอริทึมประมวลผลตัวอักษร
+  
 Iterative Algorithm: มีการประมวลผลตัวอักษรเป็นอัตราส่วนคงที่ตามขนาดข้อมูล คิดเป็น O(n) ครั้ง
+
 Recursive Algorithm: มีการสร้างวัตถุ String ซ้ำซ้อนจากการเวียนเกิด ทำให้เกิดการประมวลผลคัดลอกตัวอักษรจริงสูงถึง O(n^2) ครั้ง
 - การทดสอบกับสตริงขนาดต่างๆ n = 10, 100: ทั้งสองวิธีใช้เวลาใกล้เคียงกัน ไม่เห็นความต่าง n = 1,000: วิธี Recursive เริ่มช้าลงอย่างเห็นได้ชัด n = 10,000: วิธี Recursive เกิดปัญหา StackOverflowError หรือใช้เวลานานขึ้นทวีคูณจาก O(n^2)
 - Time Complexity
+  
 Iterative Algorithm: O(n)
+
 Recursive Algorithm: O(n^2)
 - Space Complexity
+  
 Iterative Algorithm: O(n)
+
 Recursive Algorithm: O(n^2)
 - ผลกระทบจากการต่อสตริงด้วย + เนื่องจาก String ใน Java เป็น Immutable (แก้ไขค่าไม่ได้) การใช้ + จะสร้างวัตถุ String ใหม่ทุกครั้ง ทำให้อัลกอริทึม Recursive ช้าลงมากจาก O(n) กลายเป็น O(n^2)
 - ความแตกต่างระหว่าง String และ StringBuilder: StringBuilder เป็น Mutable สามารถเพิ่มตัวอักษรลงในอาร์เรย์เดิมได้โดยไม่ต้องสร้างวัตถุใหม่ ช่วยประหยัดทั้งเวลาและหน่วยความจำ
@@ -256,21 +262,31 @@ Recursive Two-Pointer
 ตอบ Recursive Two-Pointer เหมาะกับกรณีที่ต้องการประสิทธิภาพสูงที่สุด เพราะมีคุณสมบัติหยุดทำงานได้ทันทีเมื่อพบตัวอักษรคู่แรกที่ไม่ตรงกัน (Early Exit) ทำให้กรณีที่ดีที่สุด (Best-case) ใช้เวลาเพียง O(1)
 
 # ตอบงานวิเคราะห์
-- กรณีที่สตริงเป็น Palindrome 
+- กรณีที่สตริงเป็น Palindrome
+
 Reverse and Compare: อ่านสตริงทั้งหมดเพื่อกลับลำดับ O(n)แล้วเปรียบเทียบสตริงจนครบ O(n)
+
 Recursive Two-Pointer: เปรียบเทียบตัวอักษร n/2 คู่ O(n)
 - กรณีที่ตัวอักษรคู่แรกไม่ตรงกัน
+  
 Reverse and Compare: ยังคงสร้างสตริงย้อนกลับจนเสร็จสมบูรณ์ O(n) แล้วจึงพบว่าไม่ตรงกัน
+
 Recursive Two-Pointer: หยุดประมวลผลทันทีในขั้นตอนแรก (Early Exit)
 - Best-case Time Complexity
+  
 Reverse and Compare: O(n)
+
 Recursive Two-Pointer: O(1) (เมื่อคู่แรกไม่เท่ากัน)
 - Worst-case Time Complexity
+  
 ทั้งสองวิธีมี Time Complexity เป็น O(n) (เมื่อเป็น Palindrome หรือตัวอักษรต่างกันคู่สุดท้าย)
 - Space Complexity
+  
 Reverse and Compare: O(n) สำหรับสร้างสตริงใหม่
+
 Recursive Two-Pointer: O(n) สำหรับ Stack Depth ของเวียนเกิด (หรือ $O(1) ถ้านับเฉพาะ Memory ที่ไม่รวม Stack)
 - ความสามารถในการหยุดทำงานก่อนครบทุกตัวอักษร
+  
 Recursive Two-Pointer มีคุณสมบัติ Short-circuiting สามารถหยุดทำงานได้ทันทีเมื่อพบตัวอักษรที่ไม่เข้าคู่กัน จึงมีประสิทธิภาพสูงกว่าในข้อมูลจริง
 
 ## ข้อ 3 การเปรียบเทียบจำนวนสระและพยัญชนะ
@@ -395,6 +411,7 @@ Iterative Counting
 
 # ตอบงานวิเคราะห์
 - Time Complexity ของทั้งสองวิธี
+  
 ได้ O(n) ทั้งสองวิธี เนื่องจากเข้าถึงตัวอักษรทุกตัว ตัวละ 1 ครั้ง
 - Space Complexity ของทั้งสองวิธี
 
@@ -574,30 +591,35 @@ Extra Array
 
 # ตอบงานวิเคราะห์
 - Time Complexity
+
 Recursive Two-Pointer: O(n)
 
 Iterative Two-Pointer: O(n)
 
 Extra Array: O(n)
 - Space Complexity
+
 Recursive Two-Pointer: O(n)
 
 Iterative Two-Pointer: O(1)
 
 Extra Array: O(n)
 - จำนวนครั้งของการสลับข้อมูล
+
 Recursive Two-Pointer: n/2 ครั้ง
 
 Iterative Two-Pointer: n/2 ครั้ง
 
 Extra Array: 0 ครั้ง
 - การเปลี่ยนแปลงอาร์เรย์เดิม
+
 Recursive Two-Pointer: เปลี่ยนแปลง (In-place)
 
 Iterative Two-Pointer: เปลี่ยนแปลง (In-place)
 
 Extra Array: ไม่เปลี่ยนแปลง (สร้างอาร์เรย์ใหม่)
 - ความเป็น Stable Algorithm
+  
 Recursive Two-Pointer: Not Stable
 
 Iterative Two-Pointer: Not Stable
@@ -610,10 +632,12 @@ Extra Array: Stable
 - สมาชิกที่มีค่าน้อยกว่าหรือเท่ากับ k อยู่ด้านหน้า
 - สมาชิกที่มีค่ามากกว่า k อยู่ด้านหลัง
 ตัวอย่าง
+```text
 A = [12, 4, 7, 15, 3, 10, 8]
 k = 8
 ผลลัพธ์ที่เป็นไปได้
 [8, 4, 7, 3, 15, 10, 12]
+```
 ให้ออกแบบอย่างน้อย 3 อัลกอริทึม ได้แก่
 - อัลกอริทึมที่ 1: Recursive Partition
 ใช้ตัวชี้ซ้ายและขวาเพื่อตรวจสอบและสลับสมาชิกในอาร์เรย์แบบเวียนเ
@@ -640,13 +664,19 @@ static void partitionBySorting(int[] a, int k)
 - ความสัมพันธ์ของปัญหานี้กับขั้นตอน Partition ใน Quick Sort
 ให้นักศึกษาระบุด้วยว่าอัลกอริทึมใดสามารถทำงานแบบ In-place ได้
 5.1 คำอธิบายแนวคิดของอัลกอริทึมแต่ละวิธี
+  
 ตอบ
-- Recursive Partition: ใช้ขอบเขต left และ right เวียนเกิดเพื่อแบ่งส่วนข้อมูลในรูปแบบ In-place
-- Iterative Partition: ใช้ตัวชี้ i ระบุตำแหน่งสิ้นสุดของกลุ่ม <= k วนลูปอ่านข้อมูลด้วย j หากพบ a[j] <= k ให้เพิ่มค่า i และสลับข้อมูล
-- Sorting-Based Algorithm: ทำการเรียงลำดับอาร์เรย์ทั้งหมดจากน้อยไปมาก ข้อมูลที่ <= k จะถูกจัดกลุ่มไว้ด้านหน้าโดยอัตโนมัติ
+
+Recursive Partition: ใช้ขอบเขต left และ right เวียนเกิดเพื่อแบ่งส่วนข้อมูลในรูปแบบ In-place
+
+Iterative Partition: ใช้ตัวชี้ i ระบุตำแหน่งสิ้นสุดของกลุ่ม <= k วนลูปอ่านข้อมูลด้วย j หากพบ a[j] <= k ให้เพิ่มค่า i และสลับข้อมูล
+
+Sorting-Based Algorithm: ทำการเรียงลำดับอาร์เรย์ทั้งหมดจากน้อยไปมาก ข้อมูลที่ <= k จะถูกจัดกลุ่มไว้ด้านหน้าโดยอัตโนมัติ
 
 5.2 Pseudocode หรือผังขั้นตอนการทำงาน
+
 ตอบ
+```text
 // Algorithm 1: Recursive Partition
 Algorithm partitionRecursive(a, k, left, right):
     If left >= right: Return
@@ -667,52 +697,74 @@ Algorithm partitionIterative(a, k):
 // Algorithm 3: Sorting-Based Algorithm
 Algorithm partitionBySorting(a, k):
     Sort(a) // O(n log n)
-
+```
 5.3 โปรแกรมภาษา Java ที่สามารถทำงานได้จริง
+
 ตอบ PartitionByK.java
 
 5.4 ตัวอย่างข้อมูลนำเข้าและผลลัพธ์
-ตอบ Input: A = [12, 4, 7, 15, 3, 10, 8], k = 8
-Iterative Partition Result: [4, 7, 3, 8, 12, 10, 15]
 
-5.5 การวิเคราะห์ Time Complexity
 ตอบ 
-- Recursive Partition: O(n)
-- Iterative Partition: O(n)
-- Sorting-Based Algorithm: O(n log n)
+```text
+Input: A = [12, 4, 7, 15, 3, 10, 8], k = 8
+Iterative Partition Result: [4, 7, 3, 8, 12, 10, 15]
+```
+5.5 การวิเคราะห์ Time Complexity
+
+ตอบ 
+
+Recursive Partition: O(n)
+
+Iterative Partition: O(n)
+
+Sorting-Based Algorithm: O(n log n)
 
 5.6 การวิเคราะห์ Space Complexity
+
 ตอบ
-- Recursive Partition: O(n)(Call stack)
-- Iterative Partition: O(1)
-- Sorting-Based Algorithm: O(1) ถึง O(n log n) (ขึ้นอยู่กับ Dual-Pivot Quicksort ของ Java)
+
+Recursive Partition: O(n)(Call stack)
+
+Iterative Partition: O(1)
+
+Sorting-Based Algorithm: O(1) ถึง O(n log n) (ขึ้นอยู่กับ Dual-Pivot Quicksort ของ Java)
 
 5.7 การเปรียบเทียบข้อดีและข้อจำกัดของแต่ละอัลกอริทึม
+
 ตอบ
+
 Recursive Partition
+
 ข้อดี
 - นำไปประยุกต์ใช้กับแนวคิดแบบ Divide and Conquer ได้ง่าย  
 - ปรับเปลี่ยนข้อมูลในอาร์เรย์เดิม (In-place)
+
 ข้อจำกัด
 - สิ้นเปลืองหน่วยความจำ Call Stack O(n)  
 - ไม่รักษาสถียรภาพลำดับเดิมของข้อมูล
 
 Iterative Partition
+
 ข้อดี
 - ทำงานได้เร็วแบบ Linear Time (O(n))  
 - ใช้หน่วยความจำคงที่ (O(1) Space) และทำแบบ In-place  
 - เหมาะสมที่สุดสำหรับขั้นตอนการ Partition
+
 ข้อจำกัด
 - ไม่รักษาเสถียรภาพลำดับเดิมของสมาชิกในกลุ่ม
+
 Sorting-Based Algorithm
+
 ข้อดี
 - สมาชิกทั้งอาร์เรย์จะถูกเรียงลำดับอย่างเป็นระเบียบสมบูรณ์
+
 ข้อจำกัด
 - ช้ากว่าวิธีอื่นอย่างมาก (O(n log n)) เนื่องจากทำงานเกินกว่าที่โจทย์ต้องการ  
 - ไม่คุ้มค่าหากต้องการเพียงแค่การแบ่งกลุ่ม
 
 
 5.8 สรุปว่าอัลกอริทึมใดเหมาะสมกว่าภายใต้เงื่อนไขใด
+
 ตอบ Iterative Partition เหมาะที่สุดสำหรับงานจัดกลุ่มทั่วไป เพราะใช้เวลาประมวลผลแบบ Linear O(n) และทำได้แบบ In-place (O(1) Space) 
 
 # ตอบงานวิเคราะห์
