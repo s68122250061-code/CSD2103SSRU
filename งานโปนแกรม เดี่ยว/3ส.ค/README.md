@@ -417,10 +417,12 @@ Iterative: เหมาะกับข้อมูลทุกขนาดเน
 กำหนดอาร์เรย์จำนวนเต็ม A
 ให้นักศึกษาเขียนโปรแกรมจัดตำแหน่งสมาชิกใหม่ โดยให้จำนวนคู่ทั้งหมดอยู่ก่อนจำนวนคี่
 ตัวอย่าง
+```text
 Input:
 [7, 2, 9, 4, 1, 6, 3, 8]
 Possible Output:
 [8, 2, 6, 4, 1, 9, 3, 7]
+```
 ไม่จำเป็นต้องเรียงค่าภายในกลุ่มจากน้อยไปมาก
 ให้ออกแบบอย่างน้อย 3 อัลกอริทึม ได้แก่
 - อัลกอริทึมที่ 1: Recursive Two-Pointer
@@ -451,22 +453,31 @@ static int[] rearrangeExtraArray(int[] a)
 - ความเป็น Stable Algorithm
 ให้ตรวจสอบว่าวิธีใดรักษาลำดับเดิมของสมาชิกได้
 ตัวอย่าง
+```text
 Input:
 [5, 2, 7, 4, 9, 6]
 Stable Output:
 [2, 4, 6, 5, 7, 9]
-
+```
 4.1 คำอธิบายแนวคิดของอัลกอริทึมแต่ละวิธี
+
 ตอบ 
-- Recursive Two-Pointer: ใช้ดัชนี left และ right
+
+Recursive Two-Pointer: ใช้ดัชนี left และ right
+
 Base Case: เมื่อ left >= right ให้หยุด
+
 ขยับ left ไปทางขวาถ้าเจอคู่, ขยับ right ไปทางซ้ายถ้าเจอคี่
+
 ถ้า left เป็นคี่ และ right เป็นคู่ ให้สลับค่า แล้วเรียกเวียนเกิดช่วงถัดไป
-- Iterative Two-Pointer: ใช้ลูป while (left < right) วนทำซ้ำตามตรรกะ Two-Pointer เดียวกัน
-- Extra Array: สร้างอาร์เรย์ใหม่ขนาดเท่าเดิม วนรอบแรกคัดเลือกเฉพาะเลขคู่ใส่ลงไป วนรอบสองคัดเลือกเลขคี่ใส่ต่อท้าย
+
+Iterative Two-Pointer: ใช้ลูป while (left < right) วนทำซ้ำตามตรรกะ Two-Pointer เดียวกัน
+
+Extra Array: สร้างอาร์เรย์ใหม่ขนาดเท่าเดิม วนรอบแรกคัดเลือกเฉพาะเลขคู่ใส่ลงไป วนรอบสองคัดเลือกเลขคี่ใส่ต่อท้าย
 
 4.2 Pseudocode หรือผังขั้นตอนการทำงาน
 ตอบ
+```text
 // Algorithm 1: Recursive Two-Pointer
 Algorithm rearrangeRecursive(a, left, right):
     If left >= right: Return
@@ -493,74 +504,104 @@ Algorithm rearrangeExtraArray(a):
     For x in a: If x % 2 == 0: result[idx++] = x
     For x in a: If x % 2 != 0: result[idx++] = x
     Return result
-
+```
 4.3 โปรแกรมภาษา Java ที่สามารถทำงานได้จริง
+
 ตอบ EvenOddPartition.java
 
 4.4 ตัวอย่างข้อมูลนำเข้าและผลลัพธ์
 ตอบ 
+```text
 Input: [7, 2, 9, 4, 1, 6, 3, 8], [5, 2, 7, 4, 9, 6]
 Two-Pointer Output: [8, 2, 6, 4, 1, 9, 3, 7]
 Stable Output:      [2, 4, 6, 5, 7, 9]
-
+```
 4.5 การวิเคราะห์ Time Complexity
+
 ตอบ 
-- Recursive Two-Pointer O(n)
-- Iterative Two-Pointer O(n)
-- Extra Array O(n)
+
+Recursive Two-Pointer O(n)
+
+Iterative Two-Pointer O(n)
+
+Extra Array O(n)
 
 4.6 การวิเคราะห์ Space Complexity
+
 ตอบ
-- Recursive Two-Pointer O(n)
-- Iterative Two-Pointer O(1)
-- Extra Array O(n)
+
+Recursive Two-Pointer O(n)
+
+Iterative Two-Pointer O(1)
+
+Extra Array O(n)
 
 4.7 การเปรียบเทียบข้อดีและข้อจำกัดของแต่ละอัลกอริทึม
+
 ตอบ
+
+
 Recursive Two-Pointer
+
 ข้อดี
 - ทำงานแบบ In-place แก้ไขข้อมูลภายในอาร์เรย์เดิมโดยไม่ต้องใช้อาร์เรย์ใหม่
+
 ข้อจำกัด
 - ช้พื้นที่ Call Stack O(n)
 - ไม่เป็น Stable Algorithm (ลำดับดั้งเดิมของสมาชิกจะถูกสลับเปลี่ยนไป)
 
 Iterative Two-Pointer
+
 ข้อดี
 - ทำงานได้เร็วที่สุด (O(n) Time) และประหยัดหน่วยความจำสูงสุด (O(1) Auxiliary Space)  
 -  สลับตำแหน่งภายในอาร์เรย์เดิม (In-place)
+
 ข้อจำกัด
 - ไม่เป็น Stable Algorithm ทำให้ลำดับเดิมของตัวเลขถูกเปลี่ยนแปลง
 
 Extra Array
+
 ข้อดี
 - เป็น Stable Algorithm เพียงวิธีเดียวที่รักษาสถียรภาพและลำดับเดิมของสมาชิกไว้ได้  
 - ตรรกะโค้ดเข้าใจง่าย ไม่ซับซ้อน  
+
 ข้อจำกัด
 - สิ้นเปลืองหน่วยความจำเพิ่มเติม O(n) สำหรับสร้างอาร์เรย์ผลลัพธ์ใหม่
 
 4.8 สรุปว่าอัลกอริทึมใดเหมาะสมกว่าภายใต้เงื่อนไขใด
+
 ตอบ Extra Array เหมาะเมื่อมีเงื่อนไขบังคับว่าต้องรักษาลำดับดั้งเดิมของสมาชิกไว้ (Stable Algorithm)
 
 # ตอบงานวิเคราะห์
 - Time Complexity
 Recursive Two-Pointer: O(n)
+
 Iterative Two-Pointer: O(n)
+
 Extra Array: O(n)
 - Space Complexity
 Recursive Two-Pointer: O(n)
+
 Iterative Two-Pointer: O(1)
+
 Extra Array: O(n)
 - จำนวนครั้งของการสลับข้อมูล
 Recursive Two-Pointer: n/2 ครั้ง
+
 Iterative Two-Pointer: n/2 ครั้ง
+
 Extra Array: 0 ครั้ง
 - การเปลี่ยนแปลงอาร์เรย์เดิม
 Recursive Two-Pointer: เปลี่ยนแปลง (In-place)
+
 Iterative Two-Pointer: เปลี่ยนแปลง (In-place)
+
 Extra Array: ไม่เปลี่ยนแปลง (สร้างอาร์เรย์ใหม่)
 - ความเป็น Stable Algorithm
 Recursive Two-Pointer: Not Stable
+
 Iterative Two-Pointer: Not Stable
+
 Extra Array: Stable
 
 ## ข้อ 5 การแบ่งอาร์เรย์ตามค่า k
