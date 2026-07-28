@@ -65,41 +65,59 @@ Algorithm reverseIterative(s):
     Return sb.toString()
 ```
 1.3 โปรแกรมภาษา Java ที่สามารถทำงานได้จริง
+
 ตอบ StringReversal.java
 
 1.4 ตัวอย่างข้อมูลนำเข้าและผลลัพธ์
+
 ตอบ
+```text
 Input:  pots&pans
 Output (Recursive): snap&stop
 Output (Iterative): snap&stop
-
+```
 1.5 การวิเคราะห์ Time Complexity
-ตอบ Iterative Algorithm: O(n) เนื่องจากลูปทำงาน n รอบ และการแอลโลเคตอาร์เรย์ใน StringBuilder มีค่าเฉลี่ยการทำงานแบบ O(1) ต่อการ append 
+
+ตอบ 
+
+Iterative Algorithm: O(n) เนื่องจากลูปทำงาน n รอบ และการแอลโลเคตอาร์เรย์ใน StringBuilder มีค่าเฉลี่ยการทำงานแบบ O(1) ต่อการ append 
+
 Recursive Algorithm: O(n^2) เนื่องจากในการเวียนเกิดแต่ละครั้ง เมธอด substring() และการต่อสตริงด้วยเครื่องหมาย + จะทำการสร้างวัตถุ String ใหม่ และคัดลอกตัวอักษรขนาด O(k) ทุกๆ ขั้นตอน ทำให้ผลรวมเวลาทำงานเป็น n + (n-1) + ... + 1 = O(n^2)
 
 1.6 การวิเคราะห์ Space Complexity
-ตอบ Iterative Algorithm: O(n) สำหรับเก็บสตริงผลลัพธ์ใน StringBuilder
+
+ตอบ 
+
+Iterative Algorithm: O(n) สำหรับเก็บสตริงผลลัพธ์ใน StringBuilder
+
 Recursive Algorithm: O(n^2) หากนับรวมพื้นที่ของวัตถุ Intermediate String ที่ถูกสร้างใน Call Stack หรืออย่างน้อย O(n) สำหรับ Call Stack Depth n ชั้น
 
 
 1.7 การเปรียบเทียบข้อดีและข้อจำกัดของแต่ละอัลกอริทึม
+
 ตอบ 
+
 Recursive Algorithm
+
 ข้อดี 
 - โค้ดตรงตามนิยามทางคณิตศาสตร์ ช่วยให้เข้าใจแนวคิดการย่อยปัญหาเป็นปัญหาย่อย (Sub-problems)
+
 ข้อจำกัด 
 - ประสิทธิภาพต่ำ (O(n^2)) เมื่อใช้เครื่องหมาย + ต่อสตริง เพราะต้องสร้างวัตถุสตริงใหม่ซ้ำๆ 
 - สิ้นเปลืองหน่วยความจำใน Call Stack O(n) และเสี่ยงต่อ StackOverflowError หากสตริงยาว
 
 Iterative Algorithm
+
 ข้อดี 
 - ทำงานได้รวดเร็วด้วย Time Complexity O(n)
 - ใช้ StringBuilder ช่วยประหยัดหน่วยความจำในการสร้างผลลัพธ์
 - ไม่มีปัญหาเรื่อง Call Stack
+
 ข้อจำกัด 
 - ต้องเขียนโครงสร้างลูปและควบคุมดัชนี (Index) ด้วยตนเอง
 
 1.8 สรุปว่าอัลกอริทึมใดเหมาะสมกว่าภายใต้เงื่อนไขใด
+
 ตอบ สรุป Iterative Algorithm เหมาะสมกว่าอย่างยิ่ง โดยเฉพาะเมื่อขนาดสตริงใหญ่ขึ้น (n >= 1,000) เพราะไม่เสี่ยงต่อปัญหา Call Stack เต็ม (StackOverflowError) และประมวลผลได้เร็วกว่า
 
 # ตอบงานวิเคราะห์
