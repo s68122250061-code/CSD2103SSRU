@@ -40,11 +40,12 @@ static String reverseIterative(String s)
 
 1.1 คำอธิบายแนวคิดของอัลกอริทึมแต่ละวิธี
 - ตอบ 
-1. Recursive Algorithmซ: หลักการใช้ Divide and Conquer โดยดึงตัวอักษรตัวสุดท้ายออกมา แล้วนำไปต่อหน้าผลลัพธ์ของการเรียกเมธอดเวียนเกิดซ้ำกับสตริงส่วนที่เหลือ
-2. Iterative Algorithm: การนำลูปอ่านจากดัชนีสุดท้าย (s.length() - 1) ถอยหลังลงมาถึง 0 แล้วนำมาต่อเข้ากับ StringBuilder
+1.1 Recursive Algorithmซ: หลักการใช้ Divide and Conquer โดยดึงตัวอักษรตัวสุดท้ายออกมา แล้วนำไปต่อหน้าผลลัพธ์ของการเรียกเมธอดเวียนเกิดซ้ำกับสตริงส่วนที่เหลือ
+1.1 Iterative Algorithm: การนำลูปอ่านจากดัชนีสุดท้าย (s.length() - 1) ถอยหลังลงมาถึง 0 แล้วนำมาต่อเข้ากับ StringBuilder
 
 1.2 Pseudocode หรือผังขั้นตอนการทำงาน
-ตอบ
+- ตอบ
+```text
 // Recursive Algorithm
 Algorithm reverseRecursive(s):
     If s is null OR length(s) <= 1:
@@ -58,7 +59,7 @@ Algorithm reverseIterative(s):
     For i = length(s) - 1 down to 0:
         Append s[i] to sb
     Return sb.toString()
-
+```
 1.3 โปรแกรมภาษา Java ที่สามารถทำงานได้จริง
 ตอบ StringReversal.java
 
