@@ -96,6 +96,7 @@ Recursive Algorithm: O(n^2) หากนับรวมพื้นที่ข�
 1.7 การเปรียบเทียบข้อดีและข้อจำกัดของแต่ละอัลกอริทึม
 
 ตอบ 
+
 Recursive Algorithm
 
 ข้อดี 
@@ -139,10 +140,12 @@ Recursive Algorithm: O(n^2)
 Palindrome หรือไม่
 Palindrome คือสตริงที่อ่านจากซ้ายไปขวาและขวาไปซ้ายแล้วได้ข้อความเดียวกัน
 ตัวอย่าง
+```text
 racecar → true
 level → true
 algorithm → false
 gohangasalamiimalasagnahog → true
+```
 ให้ออกแบบอย่างน้อย 2 อัลกอริทึม ได้แก่
 - อัลกอริทึมที่ 1: Reverse and Compare
 สร้างสตริงย้อนกลับก่อน แล้วจึงเปรียบเทียบกับสตริงเดิม
@@ -166,18 +169,25 @@ static boolean isPalindromeRecursive(String s, int left, int right)
 - ตัวพิมพ์เล็กและตัวพิมพ์ใหญ่
 - ช่องว่าง
 - เครื่องหมายวรรคตอน
+  
 ตัวอย่าง
+```text
 A man, a plan, a canal: Panama
 ควรให้ผลลัพธ์เป็น
 true
-
+```
 2.1 คำอธิบายแนวคิดของอัลกอริทึมแต่ละวิธี
+
 ตอบ 
-- Reverse and Compare: ทำการทำความสะอาดข้อความ (ตัดช่องว่าง วรรคตอน เปลี่ยนเป็นตัวพิมพ์เล็ก) จากนั้นกลับลำดับข้อความทั้งหมด แล้วนำไปเปรียบเทียบกับข้อความเดิมด้วยเมธอด
-- Recursive Two-Pointer: ทำการทำความสะอาดข้อความล่วงหน้า แล้วใช้ดัชนีชี้ตำแหน่งซ้าย (left) และขวา (right) เพื่อเปรียบเทียบตัวอักษรคู่ตรงข้าม
+
+Reverse and Compare: ทำการทำความสะอาดข้อความ (ตัดช่องว่าง วรรคตอน เปลี่ยนเป็นตัวพิมพ์เล็ก) จากนั้นกลับลำดับข้อความทั้งหมด แล้วนำไปเปรียบเทียบกับข้อความเดิมด้วยเมธอด
+
+Recursive Two-Pointer: ทำการทำความสะอาดข้อความล่วงหน้า แล้วใช้ดัชนีชี้ตำแหน่งซ้าย (left) และขวา (right) เพื่อเปรียบเทียบตัวอักษรคู่ตรงข้าม
 
 2.2 Pseudocode หรือผังขั้นตอนการทำงาน
+
 ตอบ 
+```text
 // Algorithm 1: Reverse and Compare
 Algorithm isPalindromeByReverse(s):
     cleanStr = preprocess(s) // Remove non-alphanumeric and convert to lowercase
@@ -189,37 +199,55 @@ Algorithm isPalindromeRecursive(s, left, right):
     If left >= right: Return true // Base Case
     If s[left] != s[right]: Return false // Early exit
     Return isPalindromeRecursive(s, left + 1, right - 1)
-    
+```
 2.3 โปรแกรมภาษา Java ที่สามารถทำงานได้จริง
+
 ตอบ PalindromeCheck.java
 
 2.4 ตัวอย่างข้อมูลนำเข้าและผลลัพธ์
-ตอบ Input: A man, a plan, a canal: Panama
+
+ตอบ 
+```text
+Input: A man, a plan, a canal: Panama
 Result 1: true
 Result 2: true
-
+```
 2.5 การวิเคราะห์ Time Complexity
-ตอบ Reverse and Compare: O(n)
+
+ตอบ 
+
+Reverse and Compare: O(n)
+
 Recursive Two-Pointer: O(1) (เมื่อคู่แรกไม่เท่ากัน)
 
 2.6 การวิเคราะห์ Space Complexity
-ตอบ Reverse and Compare: O(n) สำหรับสร้างสตริงใหม่
+
+ตอบ
+
+Reverse and Compare: O(n) สำหรับสร้างสตริงใหม่
+
 Recursive Two-Pointer: O(n) สำหรับ Stack Depth ของเวียนเกิด (หรือ O(1) ถ้านับเฉพาะ Memory ที่ไม่รวม Stack)
 
 2.7 การเปรียบเทียบข้อดีและข้อจำกัดของแต่ละอัลกอริทึม
+
 ตอบ 
+
 Reverse and Compare
+
 ข้อดี 
 - เขียนโค้ดได้สั้น อ่านและเข้าใจง่าย  
-- เรียกใช้เมธอดสำเร็จรูปในการกลับลำดับได้สะดวก  
+- เรียกใช้เมธอดสำเร็จรูปในการกลับลำดับได้สะดวก
+  
 ข้อจำกัด
 - ต้องสร้างสตริงย้อนกลับใหม่เสมอ สิ้นเปลืองหน่วยความจำ O(n)
 - ไม่มีระบบหยุดทำงานก่อน (No Early Exit) ต้องประมวลผลสตริงจนครบทั้งเส้นแม้คู่แรกจะไม่ตรงกันก็ตาม 
 
 Recursive Two-Pointer
+
 ข้อดี
 - มีคุณสมบัติ Early Exit หยุดทำงานทันทีที่พบตัวอักษรคู่แรกที่ไม่ตรงกัน (O(1) Best Case)  
 - ไม่ต้องสร้างสตริงย้อนกลับขึ้นมาใหม่
+- 
 ข้อจำกัด
 - มี Overhead จากการสร้าง Stack Frame ในการเวียนเกิด (O(n) Space Complexity)  
 - เสี่ยงต่อ Stack Overflow หากข้อมูลมีขนาดใหญ่มาก
@@ -251,10 +279,12 @@ Recursive Two-Pointer มีคุณสมบัติ Short-circuiting สา�
 กำหนดให้สระภาษาอังกฤษ ได้แก่
 a, e, i, o, u
 ตัวอย่าง
+```text
 Input: education
 Vowels: 5
 Consonants: 4
 Result: true
+```
 ให้ออกแบบอย่างน้อย 2 อัลกอริทึม ได้แก่
 - อัลกอริทึมที่ 1: Recursive Counting
 ตรวจสอบตัวอักษรทีละตัวด้วยการเรียกเมธอดแบบเวียนเกิด
@@ -280,14 +310,17 @@ static boolean hasMoreVowelsIterative(String s)
 - ขนาดข้อมูลที่เหมาะสมสำหรับแต่ละวิธี
 
 3.1 คำอธิบายแนวคิดของอัลกอริทึมแต่ละวิธี
+
 ตอบ 
-- Recursive Counting: ใช้ Helper Method ส่งค่าดัชนีปัจจุบัน พร้อมตัวนับสระ (vCount) และพยัญชนะ (cCount)
-Base Case: เมื่อดัชนีเท่ากับความยาวสตริง ให้เปรียบเทียบ vCount > cCount
-Recursive Case: ตรวจสอบตัวอักษรปัจจุบัน หากเป็นสระให้เพิ่ม vCount หากเป็นพยัญชนะให้เพิ่ม cCount แล้วเรียกเวียนเกิดในตำแหน่งถัดไป
-- Iterative Counting: ใช้ลูป for วนตรวจสอบตัวอักษรในสตริงทีละตัว เพิ่มค่าตัวนับตามประเภท แล้วเปรียบเทียบผลลัพธ์หลังจบการทำงาน
+
+Recursive Counting: ใช้ Helper Method ส่งค่าดัชนีปัจจุบัน พร้อมตัวนับสระ (vCount) และพยัญชนะ (cCount)
+
+Iterative Counting: ใช้ลูป for วนตรวจสอบตัวอักษรในสตริงทีละตัว เพิ่มค่าตัวนับตามประเภท แล้วเปรียบเทียบผลลัพธ์หลังจบการทำงาน
 
 3.2 Pseudocode หรือผังขั้นตอนการทำงาน
+
 ตอบ 
+```text
 // Algorithm 1: Recursive Counting
 Algorithm hasMoreVowelsRecursive(s):
     Return countHelper(s, 0, 0, 0)
@@ -308,36 +341,51 @@ Algorithm hasMoreVowelsIterative(s):
         If isVowel(ch): vCount++
         Else if isConsonant(ch): cCount++
     Return vCount > cCount
-
+```
 3.3 โปรแกรมภาษา Java ที่สามารถทำงานได้จริง
+
 ตอบ VowelConsonantCounter.java
 
 3.4 ตัวอย่างข้อมูลนำเข้าและผลลัพธ์
-ตอบ Input: education
+
+ตอบ
+```text
+Input: education
 Recursive Result: true
 Iterative Result: true
-
+```
 3.5 การวิเคราะห์ Time Complexity
+
 ตอบ ได้ O(n) ทั้งสองวิธี เนื่องจากเข้าถึงตัวอักษรทุกตัว ตัวละ 1 ครั้ง
 
 3.6 การวิเคราะห์ Space Complexity
-ตอบ Iterative: O(1) ใช้เพียงตัวแปรนับจำนวน
+
+ตอบ 
+
+Iterative: O(1) ใช้เพียงตัวแปรนับจำนวน
+
 Recursive: O(n) เนื่องจากใช้ Call Stack ความลึกเท่ากับ n
 
 3.7 การเปรียบเทียบข้อดีและข้อจำกัดของแต่ละอัลกอริทึม
+
 ตอบ 
+
 Recursive Counting
+
 ข้อดี
 - แสดงถึงการประยุกต์ใช้เวียนเกิดในการส่งผ่านค่าตัวนับแบบสะสม (Tail-recursion concept)
+
 ข้อจำกัด
 -  สิ้นเปลืองหน่วยความจำ Call Stack ตามความยาวสตริง (O(n) Space)  
 - มีความเสี่ยงสูงที่จะเกิด StackOverflowError เมื่อประมวลผลข้อความขนาดใหญ่
 
 Iterative Counting
+
 ข้อดี
 - ประสิทธิภาพสูง ทำงานในรอบเดียว (O(n) Time)  
 - ประหยัดหน่วยความจำอย่างมาก ใช้พื้นที่คงที่ (O(1) Space)  
-- ปลอดภัยและรองรับข้อมูลขนาดใหญ่ได้ทุกระดับ 
+- ปลอดภัยและรองรับข้อมูลขนาดใหญ่ได้ทุกระดับ
+
 ข้อจำกัด
 - รูปแบบการเขียนโค้ดเป็นแบบดั้งเดิม (Imperative style) ต้องคอยปรับปรุงค่าในตัวแปรนับ
 
@@ -348,14 +396,20 @@ Iterative Counting
 - Time Complexity ของทั้งสองวิธี
 ได้ O(n) ทั้งสองวิธี เนื่องจากเข้าถึงตัวอักษรทุกตัว ตัวละ 1 ครั้ง
 - Space Complexity ของทั้งสองวิธี
-Iterative: O(1) 
+
+Iterative: O(1)
+
 Recursive: O(n) 
 - จำนวน Recursive Calls
+
  เท่ากับ n + 1 ครั้ง (รวมการเรียกครั้งสุดท้ายที่เข้า Base Case)
 - ความเสี่ยงของ StackOverflowError
+
 วิธี Recursive มีความเสี่ยงสูงหากสตริงมีความยาวมากเกินขีดจำกัด Call Stack ของ JVM (ประมาณ 10,000 ตัวอักษขึ้นไป)
 - ขนาดข้อมูลที่เหมาะสม
+
 Recursive: เหมาะกับสตริงขนาดเล็ก (n < 1,000) หรือเพื่อวัตถุประสงค์เชิงการเรียนรู้การเขียนโค้ด
+
 Iterative: เหมาะกับข้อมูลทุกขนาดเนื่องจากประหยัดหน่วยความจำและไม่มีความเสี่ยงเรื่อง Stack Overflow
 
 ## ข้อ 4 การจัดกลุ่มจำนวนคู่และจำนวนคี่
