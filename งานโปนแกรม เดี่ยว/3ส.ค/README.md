@@ -769,24 +769,36 @@ Sorting-Based Algorithm
 
 # ตอบงานวิเคราะห์
 - วิธี Recursive Partition
+  
 ใช้ขอบเขต left และ right เวียนเกิดเพื่อแบ่งส่วนข้อมูลในรูปแบบ In-place
 - วิธี Iterative Partition
+  
 Iterative Partition: ใช้ตัวชี้ i ระบุตำแหน่งสิ้นสุดของกลุ่ม <= k วนลูปอ่านข้อมูลด้วย j หากพบ a[j] <= k ให้เพิ่มค่า i และสลับข้อมูล
 - วิธี Sorting-Based
+  
 Sorting-Based Algorithm: ทำการเรียงลำดับอาร์เรย์ทั้งหมดจากน้อยไปมาก ข้อมูลที่ <= k จะถูกจัดกลุ่มไว้ด้านหน้าโดยอัตโนมัติ
 - Time Complexity ของแต่ละวิธี
+  
 Recursive Partition: O(n)
+
 Iterative Partition: O(n)
+
 Sorting-Based Algorithm: O(n log n)
 - Space Complexity ของแต่ละวิธี
+  
 Recursive Partition: O(n)(Call stack)
+
 Iterative Partition: O(1)
+
 Sorting-Based Algorithm: O(1) ถึง O(n log n)
 - เหตุผลที่การเรียงลำดับอาจทำให้โปรแกรมช้ากว่าที่จำเป็น
+  
 โจทย์ต้องการเพียงการ "จัดกลุ่ม" สองฝั่ง ไม่ได้ต้องการให้สมาชิกภายในกลุ่มเรียงลำดับอย่างเป็นระเบียบ การเรียงลำดับจึงทำเกินความจำเป็นส่งผลให้ Time Complexity สูงขึ้นเป็น O(n log n)
 - ความสัมพันธ์ของปัญหานี้กับขั้นตอน Partition ใน Quick Sort
+  
 ขั้นตอน Partition ใน Quick Sort โดยตรง ซึ่งทำหน้าที่แบ่งข้อมูลออกเป็นสองส่วนรอบ Pivot k
 - ให้นักศึกษาระบุด้วยว่าอัลกอริทึมใดสามารถทำงานแบบ In-place ได้
+  
 Recursive Partition
 
 ## ข้อ 6 การค้นหาคู่จำนวนที่มีผลรวมเท่ากับ k
@@ -794,10 +806,12 @@ Recursive Partition
 และสมาชิกเรียงจากน้อยไปมากแล้ว พร้อมจำนวนเต็ม k
 ให้นักศึกษาเขียนโปรแกรมค้นหาสมาชิกสองค่าที่มีผลรวมเท่ากับ k
 ตัวอย่าง
+```text
 A = [2, 4, 7, 11, 15, 20]
 k = 18
 ผลลัพธ์
 Pair found: 7 and 11
+```
 ให้ออกแบบอย่างน้อย 3 อัลกอริทึม ได้แก่
 - อัลกอริทึมที่ 1: Brute Force
 ตรวจสอบสมาชิกทุกคู่ที่เป็นไปได้
@@ -824,20 +838,24 @@ k - A[i]
 static boolean findPairBinarySearch(int[] a, int k)
 # งานวิเคราะห์
 ให้นักศึกษาวิเคราะห์และเปรียบเทียบ
-อัลกอริทึม 
-แนวคิด 
-Time Complexity
-Space Complexity
-ให้อธิบายว่าเหตุใด Two-Pointer จึงใช้ได้เมื่ออาร์เรย์เรียงลำดับแล้ว
+- อัลกอริทึม แนวคิด 
+- Time Complexity
+- Space Complexity
+- ให้อธิบายว่าเหตุใด Two-Pointer จึงใช้ได้เมื่ออาร์เรย์เรียงลำดับแล้ว
 และจะเกิดอะไรขึ้นหากนำวิธีนี้ไปใช้กับอาร์เรย์ที่ยังไม่เรียงลำดับ
 6.1 คำอธิบายแนวคิดของอัลกอริทึมแต่ละวิธี
+  
 ตอบ 
-- Brute Force: ตรวจสอบทุกคู่ที่เป็นไปได้ด้วยลูปซ้อน
-- Recursive Two-Pointer: ปรับช่วงการค้นหาจากขอบซ้าย-ขวาเข้าหากลาง
-- Binary Search: วนลูปจับคู่สมาชิก A[i] ค้นหาคู่สมด้วย Binary Search
+
+Brute Force: ตรวจสอบทุกคู่ที่เป็นไปได้ด้วยลูปซ้อน
+
+Recursive Two-Pointer: ปรับช่วงการค้นหาจากขอบซ้าย-ขวาเข้าหากลาง
+
+Binary Search: วนลูปจับคู่สมาชิก A[i] ค้นหาคู่สมด้วย Binary Search
 
 6.2 Pseudocode หรือผังขั้นตอนการทำงาน
 ตอบ
+```text
 // Algorithm 1: Brute Force
 Algorithm findPairBruteForce(a, k):
     For i = 0 to length(a) - 2:
@@ -860,69 +878,100 @@ Algorithm findPairBinarySearch(a, k):
         If binarySearch(a, i + 1, length(a) - 1, target) != -1:
             Return true
     Return false
-
+```
 6.3 โปรแกรมภาษา Java ที่สามารถทำงานได้จริง
+
 ตอบ TwoSumSorted.java
 
 6.4 ตัวอย่างข้อมูลนำเข้าและผลลัพธ์
-ตอบ Input: a = [2, 4, 7, 11, 15, 20], k = 18
-Pair found: 7 and 11
 
-6.5 การวิเคราะห์ Time Complexity
 ตอบ
+```text
+Input: a = [2, 4, 7, 11, 15, 20], k = 18
+Pair found: 7 and 11
+```
+6.5 การวิเคราะห์ Time Complexity
+
+ตอบ
+
 Brute Force: O(n^2)
+
 Recursive Two-Pointer: O(n)
+
 Binary Search: O(n log n)
 
 6.6 การวิเคราะห์ Space Complexity
+
 ตอบ
+
 Brute Force: O(1)
+
 Recursive Two-Pointer: O(n) (Call Stack)
+
 Binary Search: O(1)
 
 6.7 การเปรียบเทียบข้อดีและข้อจำกัดของแต่ละอัลกอริทึม
+
 ตอบ
+
 Brute Force
+
 ข้อดี
 - เขียนโค้ดตรงไปตรงมา เข้าใจง่ายที่สุด  
 - ไม่จำเป็นต้องให้อาร์เรย์เรียงลำดับมาก่อน
+
 ข้อจำกัด
 - ทำงานช้ามากเมื่อข้อมูลมีขนาดใหญ่ (O(n^2))
 
 Recursive Two-Pointer
+
 ข้อดี
 -  ประมวลผลได้เร็วที่สุด (O(n) Time Complexity)  
 - ปรับบีบขอบเขตการค้นหาเข้าหากลางได้ทันที
+
 ข้อจำกัด
 - ต้องใช้กับอาร์เรย์ที่เรียงลำดับแล้วเท่านั้น  
 - สิ้นเปลืองหน่วยความจำใน Call Stack (O(n) Space)
 
 Binary Search
+
 ข้อดี
 - ประหยัดหน่วยความจำ (O(1) Space Complexity)  
 - เร็วกว่า Brute Force ชัดเจน O(n log n)
+
 ข้อจำกัด
 - ต้องใช้กับอาร์เรย์ที่เรียงลำดับแล้วเท่านั้น  
 - ช้ากว่าวิธี Two-Pointer  
 
 6.8 สรุปว่าอัลกอริทึมใดเหมาะสมกว่าภายใต้เงื่อนไขใด
+
 ตอบ Two-Pointer Algorithm เหมาะสมที่สุดเมื่อข้อมูลในอาร์เรย์ผ่านการเรียงลำดับมาแล้ว เพราะสามารถบีบขอบเขตการค้นหาจากซ้ายและขวาเข้าหากลางได้ในรอบเดียว ใช้เวลาเพียง O(n)
 
 # ตอบงานวิเคราะห์
 - อัลกอริทึม แนวคิด 
 Brute Force: ตรวจสอบทุกคู่ที่เป็นไปได้ด้วยลูปซ้อน
+
 Recursive Two-Pointer: ปรับช่วงการค้นหาจากขอบซ้าย-ขวาเข้าหากลาง
+
 Binary Search: วนลูปจับคู่สมาชิก A[i] ค้นหาคู่สมด้วย Binary Search
 - Time Complexity
+  
 Brute Force: O(n^2)
+
 Recursive Two-Pointer: O(n)
+
 Binary Search: O(n log n)
 - Space Complexity
+  
 Brute Force: O(1)
+
 Recursive Two-Pointer: O(n) (Call Stack)
+
 Binary Search: O(1)
 - ให้อธิบายว่าเหตุใด Two-Pointer จึงใช้ได้เมื่ออาร์เรย์เรียงลำดับแล้ว และจะเกิดอะไรขึ้นหากนำวิธีนี้ไปใช้กับอาร์เรย์ที่ยังไม่เรียงลำดับ
+  
 เหตุผลที่ Two-Pointer ใช้ได้กับอาร์เรย์ที่เรียงลำดับแล้ว: เพราะอาร์เรย์มีคุณสมบัติ Monotonicity (ความเป็นทางเดียว) เมื่อผลรวมน้อยกว่า k การเลื่อน left ไปทางขวาจะการันตีว่าค่าผลรวมเพิ่มขึ้นแน่นอน และเมื่อผลรวมมากกว่า k การเลื่อน right ไปทางซ้ายจะการันตีว่าค่าผลรวมลดลงแน่นอน
+
 หากนำไปใช้กับอาร์เรย์ที่ไม่เรียงลำดับ: ทิศทางการขยับตัวชี้จะคาดเดาผลลัพธ์ไม่ได้ ทำให้พลาดคู่คำตอบที่ถูกต้อง ผลลัพธ์ที่ได้จะผิดพลาดทันที
 
 ## งานทดลองเปรียบเทียบประสิทธิภาพ
